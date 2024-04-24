@@ -7,3 +7,66 @@ elif len(phrase_1)==len(phrase_2):
     print('Неможет быть - фразы равны !')
 else:
     print('Вторая фраза длинее:', phrase_2)
+
+#Задание 2
+year=int(input('Введите год'))
+if year % 2 == 0:
+    print('Этот год високосный:', year) 
+else:
+    print('Скукота - год обычный(:', year)
+
+#Задание 3
+Month=str(input('Введите месяц рождения:'))
+Day=int(input('Введите день рождения:'))
+if ((Month=='Декабрь' and Day >= 22)or(Month=='Январь' and Day<= 19)):
+        print('Ваш знак: Козерог')
+elif ((Month=='Январь' and Day >= 20)or(Month=='Февраль' and Day<= 17)):
+        print('Ваш знак: Водолей')
+elif ((Month=='Февраль' and Day >= 18)or(Month=='Март' and Day<= 19)):
+        print('Ваш знак: Рыбы') 
+elif ((Month=='Март' and Day >= 20)or(Month=='Апрель' and Day<= 19)):
+        print('Ваш знак: Овен') 
+elif ((Month=='Апрель' and Day >= 20)or(Month=='Май' and Day<= 20)):
+        print('Ваш знак: Телец') 
+elif ((Month=='Май' and Day >= 21)or(Month=='Июнь' and Day<= 20)):
+       print('Ваш знак: Близнецы') 
+elif ((Month=='Июнь' and Day >= 21)or(Month=='Июль' and Day<= 22)):
+        print('Ваш знак: Рак') 
+elif ((Month=='Июль' and Day >= 23)or(Month=='Август' and Day<= 22)): 
+        print('Ваш знак: Лев')  
+elif ((Month=='Август' and Day >= 23)or(Month=='Сентябрь' and Day<= 22)): 
+        print('Ваш знак: Дева')  
+elif ((Month=='Сентябрь' and Day >= 23)or(Month=='Октябрь' and Day<= 22)):
+         print('Ваш знак: Весы')   
+elif ((Month=='Октябрь' and Day >= 23)or(Month=='Ноябрь' and Day<= 21)): 
+        print('Ваш знак: Скорпион')  
+elif ((Month=='Ноябрь' and Day >= 22)or(Month=='Декабрь' and Day<= 21)):
+        print('Ваш знак: Стрелец')
+else:
+    print('ТЫ - ИМБА!')' 
+
+#Задание 4
+w = int(input('Введите ширину (см):')) #width
+l = int(input('Введите длинну (см):')) #length
+h = int(input('Введите высоту (см):')) #height
+if w<=15 and l<=15 and h<=15:
+    print('Использовать коробку №1')
+elif w>200 or l>200 or h>200:
+    print('Использовать упаковку для лыж')
+elif 50>w>15 or 50>l>15 or 50>h>15:
+      print('Использовать коробку №2')
+else:
+    print('Использовать коробку №3')
+
+#Задание 5
+a = int(input('Введите первое число:')) #Первое число
+b = int(input('Введите второе число:')) #Второе число
+c = int(input('Введите третье число:')) #Третье число
+d = int(input('Введите четвертое число:')) #Четвертое число
+e = int(input('Введите пятое число:')) #Пятое число
+f = int(input('Введите шестое число:')) #Шестое число
+if a+b+b==d+e+f:
+      print('Бинго ! У вас счастливый билет !')
+else:
+    print('Купи ещё билет и прокатись на автобусе! Может повезет в другой раз')
+
