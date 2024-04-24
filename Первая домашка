@@ -1,3 +1,4 @@
+#Задание 1
 phrase_1 = str(input('Введите первую фразу'))
 phrase_2 = str(input('Введите вторую фразу'))
 if len(phrase_1) > len(phrase_2):
