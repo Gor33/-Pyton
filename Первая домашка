@@ -10,7 +10,7 @@ else:
 
 #Задание 2
 year=int(input('Введите год'))
-if year % 2 == 0:
+if year % 4 == 0:
     print('Этот год високосный:', year) 
 else:
     print('Скукота - год обычный(:', year)
