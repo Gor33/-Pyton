@@ -1,1 +1,78 @@
+#Задание 1
+word = str(input('Введите cлово'))
+length = len(word) 
+if length%2==0:
+    print(word[int(length/2-1):int(length/2+1)])
+else:
+    print(word[int(length/2)])
 
+#Задание 2
+number = int(input('Введите число'))
+sum = 0
+while number != 0:
+    number = int(input('Введите число'))
+    sum = sum + number
+print('Итого: ', sum)
+
+
+#Задание 3
+import copy
+i=0
+boys = ['Peter', 'Alex', 'John', 'Arthur', 'Richard']
+girls = ['Kate', 'Liza', 'Kira', 'Emma', 'Trisha']
+if len(boys)!=len(girls):
+    print('Шухер, кто-то может остаться без пары!')
+else:
+    boys_sorted=sorted(boys)
+    girls_sorted=sorted(girls)
+    print('Идеальные пары:')
+    while i < len(boys_sorted):
+        print(boys_sorted[i],'+',girls_sorted[i] )
+        i=i+1
+
+#Задание 4
+import math
+i=0
+countries_temperature = [
+    ['Thailand', [75.2, 77, 78.8, 73.4, 68, 75.2, 77]],
+    ['Germany', [57.2, 55.4, 59, 59, 53.6]],
+    ['Russia', [35.6, 37.4, 39.2, 41, 42.8, 39.2, 35.6]],
+    ['Poland', [50, 50, 53.6, 57.2, 55.4, 55.4]]
+]
+
+while i < len(countries_temperature):
+    e=countries_temperature[i][1]
+    print(countries_temperature[i][0],'-',round((math.fsum(e)/len(e)-32)/1.8,1),'C')
+    i=i+1
+
+#Задание 5
+
+import re
+
+regexp = re.compile(r'^[АВЕКМНОРСТУХ]\d{3}[АВЕКМНОРСТУХ]{2}(?P<reg>\d{2,3})$')
+car_id = input('Введите номер: ')
+
+match = regexp.match(car_id)
+if match:
+    print(f"Результат: Номер {car_id} валиден. Регион: {match['reg']}")
+else:
+    print(f"Результат: Номер {car_id} не валиден")
+
+#Задание 6
+
+summa = 0
+new_str = []
+for string in stream:
+    array = string.split(',')
+    array[2] = int(array[2])
+    summa += array[2]
+    new_str.append(array)
+
+user = 'user1'
+user_count = 1
+for array in new_str:
+    if user != array[1]:
+        user = array[1]
+        user_count += 1
+
+print(f'Среднее значение просмотров на пользователя: {summa / user_count}')
