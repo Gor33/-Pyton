@@ -1,0 +1,122 @@
+#Первое задание
+
+ids = {'user1': [213, 213, 213, 15, 213], 
+       'user2': [54, 54, 119, 119, 119], 
+       'user3': [213, 98, 98, 35]}
+ 
+geo_set = set()
+ 
+for geo in ids.values():
+    for point in geo:
+        geo_set.add(point)
+ 
+print(geo_set)
+
+#Второе задание 
+
+queries = [
+'смотреть сериалы онлайн',
+'новости спорта',
+'афиша кино',
+'курс доллара',
+'сериалы этим летом',
+'курс по питону',
+'сериалы про спорт'
+]
+
+spisok = []
+
+for item in queries:
+    spisok.append(len(item.split()))
+
+i = 1
+
+while i <= max(spisok):
+    if spisok.count(i) >0:
+        print('Поисковых запросов, содержащих', i ,'слов(а/о):', round(spisok.count(i)*100/len(spisok),2))
+    i += 1
+
+#Третье задание 
+
+results = {
+    'vk': {'revenue': 103, 'cost': 98},
+    'yandex': {'revenue': 179, 'cost': 153},
+    'facebook': {'revenue': 103, 'cost': 110},
+    'adwords': {'revenue': 35, 'cost': 34},
+    'twitter': {'revenue': 11, 'cost': 24},
+}
+
+for company in results.values():
+    company['ROI'] = round(((company['revenue'] / company['cost'] - 1) * 100),2)
+print(results)
+
+#Четвертое задание
+
+stats = {'facebook': 55, 'yandex': 115, 'vk': 120, 'google': 99, 'email': 42, 'ok': 98}
+
+for key, value in stats.items():
+    if value == max([sale for sale in stats.values()]): 
+        print(f'Максимальный объём продаж на рекламном канале: {key}')
+
+#Пятое задание
+
+list_for_query = ['levitan', 'kartina', 'zolotaya', 'osen']
+
+key = ' '
+value = ' '
+
+list_for_query.reverse()
+
+for elements in list_for_query:
+    if (value != ' '):
+        key = value
+        value = {elements: key} 
+    else: 
+        value = elements
+print(value)
+
+#Шестое задание
+
+cook_book = {
+  'салат': [
+     {'ingridient_name': 'сыр', 'quantity': 50, 'measure': 'гр'},
+     {'ingridient_name': 'томаты', 'quantity': 2, 'measure': 'шт'},
+     {'ingridient_name': 'огурцы', 'quantity': 20, 'measure': 'гр'},
+     {'ingridient_name': 'маслины', 'quantity': 10, 'measure': 'гр'},
+     {'ingridient_name': 'оливковое масло', 'quantity': 20, 'measure': 'мл'},
+     {'ingridient_name': 'салат', 'quantity': 10, 'measure': 'гр'},
+     {'ingridient_name': 'перец', 'quantity': 20, 'measure': 'гр'}
+    ],
+  'пицца': [
+     {'ingridient_name': 'сыр', 'quantity': 20, 'measure': 'гр'},
+     {'ingridient_name': 'колбаса', 'quantity': 30, 'measure': 'гр'},
+     {'ingridient_name': 'бекон', 'quantity': 30, 'measure': 'гр'},
+     {'ingridient_name': 'оливки', 'quantity': 10, 'measure': 'гр'},
+     {'ingridient_name': 'томаты', 'quantity': 20, 'measure': 'гр'},
+     {'ingridient_name': 'тесто', 'quantity': 100, 'measure': 'гр'},   
+    ],
+  'лимонад': [
+     {'ingridient_name': 'лимон', 'quantity': 1, 'measure': 'шт'},
+     {'ingridient_name': 'вода', 'quantity': 200, 'measure': 'мл'},
+     {'ingridient_name': 'сахар', 'quantity': 10, 'measure': 'гр'},
+     {'ingridient_name': 'лайм', 'quantity': 20, 'measure': 'гр'},    
+    ]
+}
+
+portions = int(input('Введите количество порций '))
+recipes = {}
+
+for dishes, ingredients in cook_book.items():
+
+    for ingredient in ingredients:
+        named = ingredient ['ingridient_name']
+        dimension = ingredient ['measure']
+        quantity = ingredient ['quantity']
+        key = (named, dimension)
+        value = recipes.get(key, 0)
+        recipes [key] = portions * quantity + value
+        
+for ingridient_name, mass in recipes.items():
+    print(f"{ingridient_name[0].capitalize()}: {mass} {ingridient_name[1]}")
+
+
