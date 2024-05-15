@@ -1,1 +1,32 @@
+import json
+
+# 1.	Переведите содержимое файла purchase_log.txt* в словарь purchases вида: {‘1840e0b9d4’: ‘Продукты’, …}
+
+dict_n={}
+with open('purchase_log.txt', encoding='utf-8') as f :
+    for line in f:
+        line = line.strip()
+        dict_n = json.loads(line)
+        #print(dict_)
+        key=dict_n['user_id']
+        value=dict_n['category']
+        if key!='user_id':
+            dict_n.setdefault(key,value)
+
+# 2.	Для каждого user_id в файле visit_log.csv определите третий столбец с категорией покупки, если покупка была, сам файл visit_log.csv* изменять не надо. Запишите в файл funnel.csv визиты из файла visit_log.csv*, в которых были покупки с указанием категории.
+
+dict_={}
+with open ('visit_log.csv', 'r', encoding='utf-8') as f:
+    with open ('funnel.csv', 'w', encoding='utf-8') as funnel:
+        for row in f:
+            line=row.strip().split(',')
+            if line[0] in dict_.keys():
+                line_list.append(dict_[line[0]])
+                add_line=','.join(line)
+            elif line[0]=='user_id':           
+                line.append('category')
+                add_line=','.join(line)
+            else:
+                add_line=','.join(line)
+                funnel.write(add_line+'\n')
 
