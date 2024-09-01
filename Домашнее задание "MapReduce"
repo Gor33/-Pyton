@@ -1,0 +1,39 @@
+mapper.py
+
+import pandas as pd
+
+def split_requests(data : pd.Series, start: int, end: int) -> pd.Series:
+    return data[start:end].apply(lambda x: x.lower().split(" "))
+
+def value_counts(data: pd.Series, start: int, end: int) -> pd.DataFrame:
+    return pd.DataFrame(data[start:end].value_counts().reset_index())
+
+
+reducer.py
+
+import pandas as pd
+from functools import reduce
+
+def union_split_answers(arrays):
+    res = []
+    for s in arrays:
+        res += reduce(lambda a,b: a + b, s)
+    return pd.Series(res)
+
+def union_count_answers(arrays):
+    return reduce(lambda a, b: pd.concat([a, b]).groupby(['index', 'count']).sum().reset_index(), arrays)
+
+DOP
+
+import pandas as pd
+from mapper import *
+from reducer import *
+
+df = pd.read_csv("keywords.csv")
+
+res_from_nodes = [split_requests(df.keyword, 0, len(df.keyword))]
+keywords = union_split_answers(res_from_nodes)
+
+res_from_counts = [value_counts(keywords, 0, len(keywords))]
+
+res = union_count_answers(res_from_counts)
