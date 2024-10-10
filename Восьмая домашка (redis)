@@ -1,0 +1,18 @@
+cat main.py
+import pandas as pd
+from collections import defaultdict
+
+df = pd.read_csv("movies.csv")
+stat = defaultdict(int)
+
+max_w = ""
+max_c = 0;
+
+for name in df["Film"]:
+    for w in name.split():
+        w = w.lower()
+        stat[w] += 1
+        if stat[w] > max_c:
+            max_c = stat[w]
+            max_w = w
+print(max_w, max_c)
